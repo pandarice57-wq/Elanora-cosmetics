@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Elanora Beauty | Beauty & Cosmetics</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff9fb;
+            color: #33252b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(80, 40, 55, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e16597;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e8a5bc;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #49343d;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c05c84;
+        }
+
+        .cart-button {
+            border: none;
+            background: #b85c80;
+            color: white;
+            padding: 10px 17px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-button:hover {
+            background: #963f64;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                linear-gradient(rgba(255, 235, 242, 0.82), rgba(255, 248, 250, 0.92)),
+                radial-gradient(circle at top right, #f4bfd0, transparent 35%),
+                radial-gradient(circle at bottom left, #f7d6e1, transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero small {
+            color: #ad5276;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1;
+            margin: 20px 0;
+            color: #512c3b;
+        }
+
+        .hero h1 span {
+            color: #c35d84;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: auto;
+            color: #684d58;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 27px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #b85c80;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #963f64;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid #b85c80;
+            color: #a84d72;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: #b85c80;
+            color: white;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 85px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #b85c80;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #512c3b;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #765f68;
+            margin-top: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        #products {
+            background: white;
+        }
+
+        .shop-tools {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e5cbd5;
+            border-radius: 30px;
+            outline: none;
+            font-size: 16px;
+            background: #fffafa;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .filter-btn {
+            padding: 9px 18px;
+            border: 1px solid #d99ab1;
+            background: white;
+            color: #a84d72;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #b85c80;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fffafa;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(90, 45, 60, 0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(90, 45, 60, 0.14);
+        }
+
+        .product-image {
+            height: 270px;
+            position: relative;
+            background: #f9e8ee;
+            overflow: hidden;
+        }
+
+        /* IMAGE FIX: SHOW THE WHOLE PRODUCT */
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 12px;
+        }
+
+        .image-upload {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.94);
+            color: #a84d72;
+            border: none;
+            padding: 8px 13px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .image-upload input {
+            display: none;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #bd6689;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .product-info h3 {
+            margin: 8px 0;
+            color: #4c303b;
+        }
+
+        .product-info p {
+            color: #79636b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+        .price {
+            color: #a84d72;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .add-btn {
+            border: none;
+            background: #b85c80;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background: #963f64;
+        }
+
+        /* ================= ABOUT ================= */
+
+        #about {
+            background: #fff1f5;
+        }
+
+        .about-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(80, 40, 55, 0.07);
+        }
+
+        .about-box h3 {
+            font-size: 28px;
+            color: #512c3b;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: #6f5962;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            gap: 18px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            min-width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #f5cfdd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+        }
+
+        .feature h4 {
+            color: #51333e;
+            margin-bottom: 4px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: #79636b;
+        }
+
+        /* ================= CONTACT ================= */
+
+        #contact {
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: auto;
+            background: #fff8fa;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(80, 40, 55, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #573943;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #e2c6d1;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #bd6689;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: #b85c80;
+            color: white;
+            padding: 14px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background: #963f64;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #3d2630;
+            color: #f9e9ef;
+            padding: 50px 20px 25px;
+            text-align: center;
+        }
+
+        footer h2 {
+            color: #f2b5ca;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: #d9c3ca;
+            margin: 8px 0;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 13px;
+        }
+
+        /* ================= CART ================= */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 15, 20, 0.5);
+            z-index: 2000;
+            display: none;
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-panel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: min(420px, 100%);
+            height: 100%;
+            background: white;
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .cart-header h2 {
+            color: #512c3b;
+        }
+
+        .close-cart {
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item h4 {
+            color: #573943;
+        }
+
+        .cart-item p {
+            color: #a84d72;
+            margin-top: 5px;
+        }
+
+        .remove-btn {
+            border: none;
+            background: #f5d6df;
+            color: #9a4568;
+            padding: 7px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #512c3b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #806a73;
+            padding: 40px 0;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 950px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                padding: 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            section {
+                padding: 65px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+        <div class="nav-container">
+
+            <div class="logo">
+                Elanora<span>Beauty</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="cart-button" onclick="openCart()">
+                🛍 Cart <span id="cartCount">0</span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>Welcome to Elanora Beauty</small>
+
+            <h1>
+                Beauty that feels<br>
+                <span>beautiful.</span>
+            </h1>
+
+            <p>
+                Discover elegant beauty essentials designed to help
+                you express your own unique style with confidence.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">
+                    Shop Collection
+                </a>
+
+                <a href="#about" class="btn btn-secondary">
+                    Discover Us
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section id="products">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <small>Our Collection</small>
+
+                <h2>Beauty Essentials</h2>
+
+                <p>
+                    Explore our carefully selected beauty collection.
+                </p>
+
+            </div>
+
+
+            <div class="shop-tools">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-box"
+                    placeholder="Search products..."
+                    onkeyup="searchProducts()"
+                >
+
+                <div class="filters">
+
+                    <button class="filter-btn active"
+                            onclick="filterProducts('all', this)">
+                        All
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterProducts('makeup', this)">
+                        Makeup
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterProducts('lips', this)">
+                        Lips
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterProducts('face', this)">
+                        Face
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterProducts('skincare', this)">
+                        Skincare
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="products-grid" id="productsGrid">
+
+
+                <!-- PRODUCT 1 -->
+
+                <div class="product-card"
+                     data-category="face"
+                     data-name="Velvet Glow Foundation">
+
+                    <div class="product-image">
+
+                        <img id="image1"
+                             src="images/dolly-wink.jfif"
+                             alt="Velvet Glow Foundation">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image1')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Face
+                        </span>
+
+                        <h3>Velvet Glow Foundation</h3>
+
+                        <p>
+                            Smooth and elegant coverage for a naturally
+                            radiant finish.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 2,499
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Velvet Glow Foundation', 2499)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2 -->
+
+                <div class="product-card"
+                     data-category="makeup"
+                     data-name="Rose Petal Blush">
+
+                    <div class="product-image">
+
+                        <img id="image2"
+                             src="images/blush.jfif"
+                             alt="Rose Petal Blush">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image2')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Makeup
+                        </span>
+
+                        <h3>Rose Petal Blush</h3>
+
+                        <p>
+                            A soft, buildable blush for a fresh-looking
+                            touch of color.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,599
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Rose Petal Blush', 1599)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 3 -->
+
+                <div class="product-card"
+                     data-category="lips"
+                     data-name="Silk Touch Lip Tint">
+
+                    <div class="product-image">
+
+                        <img id="image3"
+                             src="images/lippies.jfif"
+                             alt="Silk Touch Lip Tint">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image3')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Lips
+                        </span>
+
+                        <h3>Silk Touch Lip Tint</h3>
+
+                        <p>
+                            A lightweight lip tint with a comfortable
+                            silky finish.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,299
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Silk Touch Lip Tint', 1299)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 4 -->
+
+                <div class="product-card"
+                     data-category="makeup"
+                     data-name="Moonlight Highlighter">
+
+                    <div class="product-image">
+
+                        <img id="image4"
+                             src="images/highlighter.jfif"
+                             alt="Moonlight Highlighter">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image4')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Makeup
+                        </span>
+
+                        <h3>Moonlight Highlighter</h3>
+
+                        <p>
+                            A luminous highlighter for a soft,
+                            glowing finish.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,799
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Moonlight Highlighter', 1799)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 5 -->
+
+                <div class="product-card"
+                     data-category="skincare"
+                     data-name="Dewy Rose Face Cream">
+
+                    <div class="product-image">
+
+                        <img id="image5"
+                             src="images/creams.jfif"
+                             alt="Dewy Rose Face Cream">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image5')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Skincare
+                        </span>
+
+                        <h3>Dewy Rose Face Cream</h3>
+
+                        <p>
+                            A soft everyday moisturizer for a fresh
+                            and comfortable feel.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,899
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Dewy Rose Face Cream', 1899)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 6 -->
+
+                <div class="product-card"
+                     data-category="lips"
+                     data-name="Velvet Rose Lipstick">
+
+                    <div class="product-image">
+
+                        <img id="image6"
+                             src="images/lipstick.jfif"
+                             alt="Velvet Rose Lipstick">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image6')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Lips
+                        </span>
+
+                        <h3>Velvet Rose Lipstick</h3>
+
+                        <p>
+                            A rich and elegant lipstick made for
+                            effortless everyday looks.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,499
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Velvet Rose Lipstick', 1499)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 7 -->
+
+                <div class="product-card"
+                     data-category="face"
+                     data-name="Soft Focus Powder">
+
+                    <div class="product-image">
+
+                        <img id="image7"
+                             src="images/powder.jfif"
+                             alt="Soft Focus Powder">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image7')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Face
+                        </span>
+
+                        <h3>Soft Focus Powder</h3>
+
+                        <p>
+                            Lightweight powder for a smooth,
+                            polished appearance.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 1,699
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Soft Focus Powder', 1699)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 8 -->
+
+                <div class="product-card"
+                     data-category="skincare"
+                     data-name="Pearl Glow Serum">
+
+                    <div class="product-image">
+
+                        <img id="image8"
+                             src="images/serum.jfif">
+                             alt="Pearl Glow Serum">
+
+                        <label class="image-upload">
+                            📷 Add Your Picture
+                            <input type="file"
+                                   accept="image/*"
+                                   onchange="changeImage(event, 'image8')">
+                        </label>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Skincare
+                        </span>
+
+                        <h3>Pearl Glow Serum</h3>
+
+                        <p>
+                            A lightweight serum designed for a
+                            fresh-looking glow.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="price">
+                                Rs. 2,199
+                            </span>
+
+                            <button class="add-btn"
+                                    onclick="addToCart('Pearl Glow Serum', 2199)">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <small>About Us</small>
+
+                <h2>Welcome to Elanora Beauty</h2>
+
+                <p>
+                    Beauty made personal.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-box">
+
+                    <h3>Our Story</h3>
+
+                    <p>
+                        Elanora Beauty is a modern beauty brand created
+                        around one simple idea: beauty should feel
+                        personal, comfortable and confident.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        From everyday makeup to skincare essentials,
+                        our collection is designed to make your beauty
+                        routine feel a little more special.
+                    </p>
+
+                </div>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <div class="feature-icon">✨</div>
+
+                        <div>
+                            <h4>Elegant Beauty</h4>
+                            <p>
+                                Products selected for effortless
+                                everyday beauty.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">💗</div>
+
+                        <div>
+                            <h4>Made With Care</h4>
+                            <p>
+                                A collection created with beauty
+                                lovers in mind.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">🌸</div>
+
+                        <div>
+                            <h4>Your Style</h4>
+                            <p>
+                                Express your own personality through
+                                beauty.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <small>Get In Touch</small>
+
+                <h2>Contact Elanora Beauty</h2>
+
+                <p>
+                    Have a question? Send us a message.
+                </p>
+
+            </div>
+
+
+            <form class="contact-form" onsubmit="sendMessage(event)">
+
+                <div class="form-group">
+
+                    <label>Your Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Message</label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button class="submit-btn" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>Elanora Beauty</h2>
+
+        <p>
+            Beauty that feels beautiful.
+        </p>
+
+        <p>
+            ✉ hello@elanorabeauty.com
+        </p>
+
+        <div class="copyright">
+            © 2026 Elanora Beauty. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- ================= CART ================= -->
+
+    <div class="cart-overlay" id="cartOverlay">
+
+        <div class="cart-panel">
+
+            <div class="cart-header">
+
+                <h2>Your Cart</h2>
+
+                <button class="close-cart" onclick="closeCart()">
+                    ×
+                </button>
+
+            </div>
+
+            <div id="cartItems"></div>
+
+            <div class="cart-total">
+
+                <span>Total</span>
+
+                <span>
+                    Rs. <span id="cartTotal">0</span>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        let cart = [];
+
+
+        /* ADD TO CART */
+
+        function addToCart(name, price) {
+
+            cart.push({
+                name: name,
+                price: price
+            });
+
+            updateCart();
+
+            alert(name + " has been added to your cart! 🛍️");
+        }
+
+
+        /* UPDATE CART */
+
+        function updateCart() {
+
+            const cartCount = document.getElementById("cartCount");
+
+            const cartItems = document.getElementById("cartItems");
+
+            const cartTotal = document.getElementById("cartTotal");
+
+
+            cartCount.textContent = cart.length;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    '<div class="empty-cart">Your cart is empty.</div>';
+
+                cartTotal.textContent = "0";
+
+                return;
+            }
+
+
+            let total = 0;
+
+            cartItems.innerHTML = "";
+
+
+            cart.forEach((item, index) => {
+
+                total += item.price;
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>Rs. ${item.price.toLocaleString()}</p>
+                        </div>
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})">
+                            Remove
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            cartTotal.textContent = total.toLocaleString();
+        }
+
+
+        /* REMOVE ITEM */
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            updateCart();
+        }
+
+
+        /* OPEN CART */
+
+        function openCart() {
+
+            document
+                .getElementById("cartOverlay")
+                .classList.add("show");
+
+            updateCart();
+        }
+
+
+        /* CLOSE CART */
+
+        function closeCart() {
+
+            document
+                .getElementById("cartOverlay")
+                .classList.remove("show");
+        }
+
+
+        /* SEARCH */
+
+        function searchProducts() {
+
+            const search =
+                document
+                    .getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+            const products =
+                document.querySelectorAll(".product-card");
+
+
+            products.forEach(product => {
+
+                const name =
+                    product
+                        .getAttribute("data-name")
+                        .toLowerCase();
+
+                if (name.includes(search)) {
+
+                    product.style.display = "block";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* FILTER */
+
+        function filterProducts(category, button) {
+
+            const products =
+                document.querySelectorAll(".product-card");
+
+            const buttons =
+                document.querySelectorAll(".filter-btn");
+
+
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+
+            button.classList.add("active");
+
+
+            products.forEach(product => {
+
+                const productCategory =
+                    product.getAttribute("data-category");
+
+
+                if (
+                    category === "all" ||
+                    productCategory === category
+                ) {
+
+                    product.style.display = "block";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* PRODUCT IMAGE UPLOAD */
+
+        function changeImage(event, imageId) {
+
+            const file = event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+
+            const reader = new FileReader();
+
+
+            reader.onload = function(e) {
+
+                document
+                    .getElementById(imageId)
+                    .src = e.target.result;
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        }
+
+
+        /* CONTACT FORM */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value;
+
+
+            alert(
+                "Thank you, " +
+                name +
+                "! Your message has been received. 💗"
+            );
+
+
+            event.target.reset();
+
+        }
+
+
+        /* CLOSE CART WHEN CLICKING OUTSIDE */
+
+        document
+            .getElementById("cartOverlay")
+            .addEventListener("click", function(event) {
+
+                if (event.target === this) {
+
+                    closeCart();
+
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
